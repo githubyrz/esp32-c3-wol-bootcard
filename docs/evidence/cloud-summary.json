@@ -1,0 +1,136 @@
+{
+  "executed_at": "2026-11-04T09:25:46.440732+08:00",
+  "hardware_tested": false,
+  "cloud_account_tested": false,
+  "transport": "in-memory",
+  "result": "PASS",
+  "scenarios": [
+    {
+      "name": "happy",
+      "checks": 13,
+      "result": "PASS"
+    },
+    {
+      "name": "session_present",
+      "checks": 13,
+      "result": "PASS"
+    },
+    {
+      "name": "auth_rejected",
+      "checks": 9,
+      "result": "PASS"
+    },
+    {
+      "name": "suback_rejected",
+      "checks": 9,
+      "result": "PASS"
+    },
+    {
+      "name": "suback_qos1",
+      "checks": 9,
+      "result": "PASS"
+    },
+    {
+      "name": "connect_timeout",
+      "checks": 9,
+      "result": "PASS"
+    },
+    {
+      "name": "tls_failure_no_downgrade",
+      "checks": 8,
+      "result": "PASS"
+    },
+    {
+      "name": "wifi_offline",
+      "checks": 7,
+      "result": "PASS"
+    },
+    {
+      "name": "pre_suback_history",
+      "checks": 9,
+      "result": "PASS"
+    },
+    {
+      "name": "guard",
+      "checks": 8,
+      "result": "PASS"
+    },
+    {
+      "name": "retained",
+      "checks": 9,
+      "result": "PASS"
+    },
+    {
+      "name": "dup",
+      "checks": 9,
+      "result": "PASS"
+    },
+    {
+      "name": "fragmented",
+      "checks": 6,
+      "result": "PASS"
+    },
+    {
+      "name": "coalesced",
+      "checks": 6,
+      "result": "PASS"
+    },
+    {
+      "name": "queue_overflow",
+      "checks": 10,
+      "result": "PASS"
+    },
+    {
+      "name": "stale_queue",
+      "checks": 8,
+      "result": "PASS"
+    },
+    {
+      "name": "disconnect_queued",
+      "checks": 10,
+      "result": "PASS"
+    },
+    {
+      "name": "cooldown",
+      "checks": 8,
+      "result": "PASS"
+    },
+    {
+      "name": "heartbeat_timeout",
+      "checks": 8,
+      "result": "PASS"
+    },
+    {
+      "name": "partial_payload",
+      "checks": 7,
+      "result": "PASS"
+    },
+    {
+      "name": "invalid_topic",
+      "checks": 7,
+      "result": "PASS"
+    },
+    {
+      "name": "empty",
+      "checks": 7,
+      "result": "PASS"
+    },
+    {
+      "name": "oversized",
+      "checks": 7,
+      "result": "PASS"
+    },
+    {
+      "name": "qos1",
+      "checks": 7,
+      "result": "PASS"
+    },
+    {
+      "name": "reconnect_cycles",
+      "checks": 4005,
+      "result": "PASS"
+    }
+  ],
+  "checks": 4208,
+  "reconnect_cycles": 1000
+}

@@ -1,0 +1,131 @@
+{
+  "executed_at": "2026-11-04T09:20:37.687335+08:00",
+  "client": "Python stdlib MQTT 3.1.1 probe",
+  "hardware_tested": false,
+  "wol_sent": false,
+  "result": "PASS",
+  "events": [
+    {
+      "event": "tls_verified",
+      "session": 1,
+      "protocol": "TLSv1.2",
+      "cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    {
+      "event": "connack",
+      "session": 1,
+      "response": [
+        1,
+        0
+      ]
+    },
+    {
+      "event": "authenticated",
+      "session": 1,
+      "requested_clean_session": true,
+      "server_session_present": true
+    },
+    {
+      "event": "subscribed",
+      "session": 1,
+      "granted_qos": 0
+    },
+    {
+      "event": "awaiting_console_off_on",
+      "maximum_seconds": 240
+    },
+    {
+      "event": "ping_response",
+      "session": 1
+    },
+    {
+      "event": "ping_response",
+      "session": 1
+    },
+    {
+      "event": "ping_response",
+      "session": 1
+    },
+    {
+      "event": "message",
+      "session": 1,
+      "after_suback": true,
+      "topic_matches": true,
+      "command": "off",
+      "bytes": 3,
+      "retain": false,
+      "dup": false,
+      "qos": 0
+    },
+    {
+      "event": "ping_response",
+      "session": 1
+    },
+    {
+      "event": "ping_response",
+      "session": 1
+    },
+    {
+      "event": "ping_response",
+      "session": 1
+    },
+    {
+      "event": "ping_response",
+      "session": 1
+    },
+    {
+      "event": "ping_response",
+      "session": 1
+    },
+    {
+      "event": "ping_response",
+      "session": 1
+    },
+    {
+      "event": "message",
+      "session": 1,
+      "after_suback": true,
+      "topic_matches": true,
+      "command": "on",
+      "bytes": 2,
+      "retain": false,
+      "dup": false,
+      "qos": 0
+    },
+    {
+      "event": "console_off_on_verified"
+    },
+    {
+      "event": "tls_verified",
+      "session": 2,
+      "protocol": "TLSv1.2",
+      "cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    {
+      "event": "connack",
+      "session": 2,
+      "response": [
+        1,
+        0
+      ]
+    },
+    {
+      "event": "authenticated",
+      "session": 2,
+      "requested_clean_session": true,
+      "server_session_present": true
+    },
+    {
+      "event": "subscribed",
+      "session": 2,
+      "granted_qos": 0
+    },
+    {
+      "event": "reconnect_and_heartbeat_verified"
+    },
+    {
+      "event": "complete",
+      "connection_closed": true
+    }
+  ]
+}

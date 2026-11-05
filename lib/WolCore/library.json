@@ -1,0 +1,5 @@
+{
+  "name": "WolCore",
+  "version": "1.0.0",
+  "description": "Hardware independent packet, validation and command policy"
+}

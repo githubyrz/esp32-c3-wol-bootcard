@@ -1,0 +1,118 @@
+{
+  "executed_at": "2026-11-04T10:29:26.203884+08:00",
+  "client": "Python stdlib MQTT 3.1.1 probe",
+  "hardware_tested": false,
+  "wol_sent": false,
+  "result": "PASS",
+  "events": [
+    {
+      "event": "tls_verified",
+      "elapsed_seconds": 0.411,
+      "session": 1,
+      "protocol": "TLSv1.2",
+      "cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    {
+      "event": "connack",
+      "elapsed_seconds": 0.505,
+      "session": 1,
+      "response": [
+        1,
+        0
+      ]
+    },
+    {
+      "event": "authenticated",
+      "elapsed_seconds": 0.506,
+      "session": 1,
+      "requested_clean_session": true,
+      "server_session_present": true
+    },
+    {
+      "event": "subscribed",
+      "elapsed_seconds": 0.618,
+      "session": 1,
+      "granted_qos": 0
+    },
+    {
+      "event": "awaiting_app_off_on",
+      "elapsed_seconds": 0.619,
+      "maximum_seconds": 240
+    },
+    {
+      "event": "message",
+      "elapsed_seconds": 5.227,
+      "session": 1,
+      "after_suback": true,
+      "topic_matches": true,
+      "command": "off",
+      "bytes": 3,
+      "retain": false,
+      "dup": false,
+      "qos": 0
+    },
+    {
+      "event": "message",
+      "elapsed_seconds": 5.571,
+      "session": 1,
+      "after_suback": true,
+      "topic_matches": true,
+      "command": "on",
+      "bytes": 2,
+      "retain": false,
+      "dup": false,
+      "qos": 0
+    },
+    {
+      "event": "ping_response",
+      "elapsed_seconds": 21.147,
+      "session": 1
+    },
+    {
+      "event": "app_off_on_verified",
+      "elapsed_seconds": 21.149
+    },
+    {
+      "event": "tls_verified",
+      "elapsed_seconds": 21.532,
+      "session": 2,
+      "protocol": "TLSv1.2",
+      "cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    {
+      "event": "connack",
+      "elapsed_seconds": 21.613,
+      "session": 2,
+      "response": [
+        1,
+        0
+      ]
+    },
+    {
+      "event": "authenticated",
+      "elapsed_seconds": 21.615,
+      "session": 2,
+      "requested_clean_session": true,
+      "server_session_present": true
+    },
+    {
+      "event": "subscribed",
+      "elapsed_seconds": 21.731,
+      "session": 2,
+      "granted_qos": 0
+    },
+    {
+      "event": "reconnect_and_heartbeat_verified",
+      "elapsed_seconds": 21.853
+    },
+    {
+      "event": "complete",
+      "elapsed_seconds": 26.858,
+      "connection_closed": true
+    }
+  ],
+  "control_source": "app",
+  "automation": "ADB, explicitly targeted MuMu emulator",
+  "command_gap_seconds": 0.344,
+  "within_10_second_window": true
+}

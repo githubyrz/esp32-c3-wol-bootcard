@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "placeholder_config_only": true,
+  "platform": "espressif32@6.12.0",
+  "arduino": "2.0.17",
+  "mqtt": "ArduinoMqttClient@0.1.8",
+  "builds": {
+    "esp32dev": {
+      "binary": ".pio/build/esp32dev/firmware.bin",
+      "file_bytes": 896752,
+      "sha256": "9826227eec7351163e4f51404a141b273b5ee3b77726f41522cee91c57198cc2",
+      "static_ram_bytes": 46880,
+      "ram_limit_bytes": 327680,
+      "flash_used_bytes": 890173,
+      "app_partition_bytes": 1310720,
+      "result": "SUCCESS"
+    },
+    "esp32c3_supermini": {
+      "binary": ".pio/build/esp32c3_supermini/firmware.bin",
+      "file_bytes": 886064,
+      "sha256": "76737a10972c4073d830bd90099f36c36f63ff6b333c66f45e4f627ecc398842",
+      "static_ram_bytes": 40804,
+      "ram_limit_bytes": 327680,
+      "flash_used_bytes": 863048,
+      "app_partition_bytes": 1310720,
+      "result": "SUCCESS"
+    }
+  }
+}

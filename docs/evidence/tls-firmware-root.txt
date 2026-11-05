@@ -1,0 +1,13 @@
+TLS probe, no credentials or MQTT CONNECT sent.
+Host and SNI: bemfa.com; port: 9503
+Trust: exact public Certum root embedded in firmware (no other roots).
+Certificate and hostname verification: OK
+Protocol: TLSv1.2
+Cipher: ECDHE-RSA-AES128-GCM-SHA256
+ECDH curve constrained to prime256v1 / P-256.
+Peer subject: ((('commonName', '*.bemfa.com'),),)
+Peer issuer: ((('countryName', 'PL'),), (('organizationName', 'Asseco Data Systems S.A.'),), (('commonName', 'Certum DV TLS G2 R39 CA'),))
+Peer notBefore: Oct 11 07:04:31 2025 GMT
+Peer notAfter: Nov 10 07:04:30 2026 GMT
+Peer SAN: (('DNS', '*.bemfa.com'), ('DNS', 'bemfa.com'))
+Result: PASS; this does not verify ESP32 or MQTT authentication.

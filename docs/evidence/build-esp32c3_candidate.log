@@ -1,0 +1,3 @@
+Processing esp32c3_candidate (board: esp32-c3-devkitm-1; platform: espressif32@6.12.0; framework: arduino)
+--------------------------------------------------------------------------------
+Tool Manager: Installing espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5

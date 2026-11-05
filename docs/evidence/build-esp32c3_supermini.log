@@ -1,0 +1,42 @@
+Processing esp32c3_supermini (board: esp32-c3-devkitm-1; platform: espressif32@6.12.0; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-c3-devkitm-1.html
+PLATFORM: Espressif 32 (6.12.0) > Espressif ESP32-C3-DevKitM-1
+HARDWARE: ESP32C3 160MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 2.40900.250804 (4.9.0) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 35 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- ArduinoMqttClient @ 0.1.8
+|-- WolCore @ 1.0.0
+|-- WiFi @ 2.0.0
+|-- WiFiClientSecure @ 2.0.0
+Building in release mode
+Compiling .pio\build\esp32c3_supermini\src\CloudClient.cpp.o
+Compiling .pio\build\esp32c3_supermini\src\main.cpp.o
+Linking .pio\build\esp32c3_supermini\firmware.elf
+Retrieving maximum program size .pio\build\esp32c3_supermini\firmware.elf
+Checking size .pio\build\esp32c3_supermini\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]  12.5% (used 40804 bytes from 327680 bytes)
+Flash: [=======   ]  65.8% (used 863048 bytes from 1310720 bytes)
+Building .pio\build\esp32c3_supermini\firmware.bin with action:
+  "$PYTHONEXE" "$OBJCOPY" --chip esp32c3 elf2image --flash_mode ${__get_board_flash_mode(__env__)} --flash_freq ${__get_board_f_image(__env__)} --flash_size 4MB --elf-sha256-offset 0xb0 -o $TARGET $SOURCES
+Building .pio\build\esp32c3_supermini\firmware.bin
+esptool.py v4.9.0
+Creating esp32c3 image...
+Merged 2 ELF sections
+Successfully created esp32c3 image.
+========================= [SUCCESS] Took 10.31 seconds =========================
+
+Environment        Status    Duration
+-----------------  --------  ------------
+esp32c3_supermini  SUCCESS   00:00:10.314
+========================= 1 succeeded in 00:00:10.314 =========================

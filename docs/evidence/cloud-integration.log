@@ -1,0 +1,37 @@
+Executed at: 2026-11-04T09:25:46.440732+08:00
+Production MQTT integration, deterministic in-memory transport; no cloud account or LAN traffic.
+Upstream ArduinoMqttClient 0.1.8 SHA256: f31dd7e9be6ca787d2395dca0fc74f56b6e996355e778222b3499a5ffcf8f791
+Host-only syntax adaptation: 4 VLAs -> vectors; 1 GCC packed struct -> MSVC pack; parser logic unchanged.
+test_cloud.cpp
+CloudClient.cpp
+WolManager.cpp
+WolWifiManager.cpp
+WolCore.cpp
+MqttClient.cpp
+正在生成代码...
+PASS happy (13 checks)
+PASS session_present (13 checks)
+PASS auth_rejected (9 checks)
+PASS suback_rejected (9 checks)
+PASS suback_qos1 (9 checks)
+PASS connect_timeout (9 checks)
+PASS tls_failure_no_downgrade (8 checks)
+PASS wifi_offline (7 checks)
+PASS pre_suback_history (9 checks)
+PASS guard (8 checks)
+PASS retained (9 checks)
+PASS dup (9 checks)
+PASS fragmented (6 checks)
+PASS coalesced (6 checks)
+PASS queue_overflow (10 checks)
+PASS stale_queue (8 checks)
+PASS disconnect_queued (10 checks)
+PASS cooldown (8 checks)
+PASS heartbeat_timeout (8 checks)
+PASS partial_payload (7 checks)
+PASS invalid_topic (7 checks)
+PASS empty (7 checks)
+PASS oversized (7 checks)
+PASS qos1 (7 checks)
+PASS reconnect_cycles (4005 checks)
+RESULT: 25 integration scenarios, 4208 checks passed; includes 1000 reconnect/wake cycles.

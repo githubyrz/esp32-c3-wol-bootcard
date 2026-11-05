@@ -1,0 +1,17 @@
+Date: 2026-11-03 Asia/Shanghai
+No credentials or MQTT CONNECT sent; TLS only.
+TLS1.2 (Arduino 2.0.17 compatibility); SNI + hostname bemfa.com; port 9503.
+CA store: Mozilla roots via certifi; OpenSSL verify_return_error.
+Exit code: 0
+Connecting to 127.0.0.1
+CONNECTION ESTABLISHED
+Protocol version: TLSv1.2
+Ciphersuite: ECDHE-RSA-AES128-GCM-SHA256
+Peer certificate: CN=*.bemfa.com
+Hash used: SHA256
+Signature type: rsa_pss_rsae_sha256
+Verification: OK
+Verified peername: bemfa.com
+Supported Elliptic Curve Point Formats: uncompressed
+Peer Temp Key: X25519, 253 bits
+DONE

@@ -1,0 +1,33 @@
+test_core.cpp
+WolCore.cpp
+WolManager.cpp
+正在生成代码...
+PASS magic_packet_layout_and_bounds
+PASS mac_supported_formats
+PASS mac_invalid_no_partial_output
+PASS ipv4_strict_parsing
+PASS non_slash24_broadcast_and_override
+PASS exact_binary_safe_command_dispatch
+PASS startup_guard_and_retained_history
+PASS cooldown_boundary_and_rearm
+PASS reconnect_and_reboot_disarm
+PASS arm_expiry_dup_busy_invalid
+PASS millis_rollover
+PASS nonblocking_burst_scheduler
+PASS config_safe_failure_tls_opt_in
+PASS mqtt_wire_retain_dup_flags_fragmentation
+PASS mqtt_frame_length_limits
+PASS documented_plain_on_off_replay_limit
+PASS real_wol_manager_fake_udp_three_sends
+PASS offline_and_subnet_change_no_replay
+PASS udp_begin_write_end_failure_paths
+RESULT: 19 tests, 848 assertions, 0 failures
+check.cpp
+WolCore.cpp
+正在生成代码...
+PASS actual AppConfig missing file: safe validation failure before network startup
+check.cpp
+WolCore.cpp
+正在生成代码...
+PASS actual AppConfig placeholder file: safe validation failure before network startup
+PASS Windows UDP loopback: 102 bytes from production C++ builder; no LAN broadcast
