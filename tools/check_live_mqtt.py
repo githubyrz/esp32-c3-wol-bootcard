@@ -151,12 +151,15 @@ def main():
     credentials = json.loads((ROOT / '.native/bemfa-live.json').read_text(encoding='utf-8'))
     if not re.fullmatch(r'[0-9a-fA-F]{32}', credentials['uid']):
         raise RuntimeError('Invalid local UID format')
-    pem = re.search(r'-----BEGIN CERTIFICATE-----.*?-----END CERTIFICATE-----',
-                    (ROOT / 'include/BemfaRootCa.h').read_text(encoding='utf-8'), re.S).group(0)
+    pems = re.findall(r'-----BEGIN CERTIFICATE-----.*?-----END CERTIFICATE-----',
+                      (ROOT / 'include/BemfaRootCa.h').read_text(encoding='utf-8'), re.S)
+    if not pems:
+        raise RuntimeError('No PEM certificates found in include/BemfaRootCa.h')
+    pem = '\n'.join(pems) + '\n'
     ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
     ctx.minimum_version = ctx.maximum_version = ssl.TLSVersion.TLSv1_2
     ctx.load_verify_locations(cadata=pem)
-    ctx.set_ciphers('ECDHE-RSA-AES128-GCM-SHA256')
+    ctx.set_ciphers('ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256')
     ctx.set_ecdh_curve('prime256v1')
     probe = Probe(ctx, **credentials, session=1)
     try:

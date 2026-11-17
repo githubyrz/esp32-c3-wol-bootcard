@@ -57,8 +57,8 @@ void CloudClient::run() {
 void CloudClient::initializeTransport() {
   if (settings_.transport == Transport::Tls) {
     secure_.setCACert(settings_.rootCa);
-    secure_.setHandshakeTimeout(5);
-    secure_.setTimeout(2);
+    secure_.setHandshakeTimeout(20);
+    secure_.setTimeout(5);
     transport_.use(secure_);
     Serial.println("[cloud] TLS 9503 enabled; CA + hostname required; no fallback");
   } else {

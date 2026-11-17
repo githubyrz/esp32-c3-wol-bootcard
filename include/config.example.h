@@ -22,7 +22,7 @@ static const Settings kSettings = {
   Protocol::Mqtt,                   // 巴法云 MQTT 协议 / Bemfa MQTT protocol
   Transport::Tls,                   // 默认启用 TLS (端口 9503) 校验根证书 / TLS port 9503
   false,                            // 是否允许明文 (端口 9501, 生产环境强烈建议 false)
-  kBemfaRootCa,                     // 内嵌 DigiCert 全球根证书 / Embedded Root CA
+  kBemfaRootCa,                     // 内嵌根证书包 (ISRG Root X1/X2 + Certum) / Embedded Root CA bundle
 
   // 4. 目标主机唤醒配置 / Target Computer Wake-on-LAN Settings
   "AA:BB:CC:DD:EE:FF",              // 目标电脑有线网卡 MAC 地址 / Target Wired Ethernet MAC

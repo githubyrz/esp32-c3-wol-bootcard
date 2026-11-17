@@ -23,7 +23,7 @@ class LedController {
     blinkState_ = true;
     set(true);
   }
-  void update(uint32_t now, bool isOnline) {
+  void update(uint32_t now, bool wifiConnected, bool cloudOnline) {
     if (blinkCount_ > 0) {
       if (now - lastToggle_ >= 80) {
         lastToggle_ = now;
@@ -33,7 +33,14 @@ class LedController {
       }
       return;
     }
-    set(isOnline);
+    if (wifiConnected && cloudOnline) {
+      set(true);
+      return;
+    }
+    // Distinguish Wi-Fi connecting (1 flash / 2s) from cloud connecting (2 flashes / 2s).
+    const uint32_t phase = now % 2000;
+    const bool pulseOn = phase < 100 || (wifiConnected && phase >= 250 && phase < 350);
+    set(pulseOn);
   }
   void set(bool on) {
     digitalWrite(kLedPin, on ? kLedOn : kLedOff);
@@ -122,6 +129,6 @@ void loop() {
     cloud.requestPublishOff();
   }
   const auto s = cloud.snapshot();
-  led.update(millis(), s.online && WiFi.status() == WL_CONNECTED);
+  led.update(millis(), WiFi.status() == WL_CONNECTED, s.online);
   delay(wolSender.busy() ? 2 : 20);
 }

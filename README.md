@@ -44,12 +44,14 @@ Target PC Wired Ethernet (Intel I226-V / Realtek PCIe NIC)
 - 💡 **GPIO 8 Status LED Indication**:
   - **Solid Blue**: Connected to Wi-Fi and Bemfa Cloud (Ready).
   - **3x Fast Blinks**: Wake command received, Magic Packet emitted.
-  - **OFF**: Connecting or Offline.
+  - **2x Blinks / 2s**: Wi-Fi connected, connecting to Bemfa Cloud (or SNTP/TLS pending).
+  - **1x Blink / 2s**: Connecting to Wi-Fi.
+  - **OFF**: Safe-stop (config error) or unpowered.
 - ❄️ **Low Heat & Maximum Reliability**:
   - CPU downclocked to **80 MHz** and RF transmit power tuned to **15 dBm** to slash peak current by ~40mA and keep the chip cool 24/7.
   - FreeRTOS idle yielding (`delay(20)`) allows CPU sleep while keeping **`WiFi.setSleep(false)`** active to prevent router DTIM packet loss or disconnects.
 - 🔒 **Enterprise-Grade TLS Security**:
-  - Communicates over secure MQTT port **9503** with DigiCert Global Root CA verification and SNTP time checks.
+  - Communicates over secure MQTT port **9503** with embedded public Root CA verification (ISRG Root X1/X2 + Certum) and SNTP time checks.
   - Prevents replay attacks, stale commands, and unauthorized triggering.
 - 🔌 **Non-Invasive Hardware**:
   - No PCIe slot required, no messy jumper wires to the motherboard `PWR_SW` header, zero motherboard warranty issues.
@@ -83,7 +85,7 @@ static const Settings kSettings = {
   Protocol::Mqtt,            // Protocol
   Transport::Tls,            // TLS port 9503
   false,                     // Plaintext disabled
-  kBemfaRootCa,              // DigiCert Root CA
+  kBemfaRootCa,              // Embedded Root CA bundle
   "AA:BB:CC:DD:EE:FF",       // Target PC Wired Ethernet MAC
   "",                        // Auto broadcast IP
   9,                         // UDP Port 9
@@ -135,13 +137,15 @@ python -m platformio run -e esp32c3_supermini -t upload
 - 💡 **GPIO 8 智能指示灯**：
   - **蓝灯常亮**：已成功连接家庭 Wi-Fi 并接入巴法云（就绪）。
   - **蓝灯快闪 3 下**：接收到开机指令，已成功发射 WOL 唤醒包。
-  - **蓝灯熄灭**：正在连接网络或处于离线状态。
+  - **蓝灯每 2 秒双闪 2 下**：Wi-Fi 已连接，正在接入巴法云（或 SNTP 对时 / TLS 校验中）。
+  - **蓝灯每 2 秒单闪 1 下**：正在连接 Wi-Fi。
+  - **蓝灯常灭**：配置校验失败进入安全停止（SAFE STOP）或未供电。
   - **红灯常亮**：纯硬件电源指示灯，只要供电正常就常亮。
 - ❄️ **低温低功耗与极致稳定**：
   - CPU 降频至 **80 MHz**，且 Wi-Fi 功放发射功率优化至 **15 dBm**，峰值电流降低约 40mA，芯片长年 24 小时待机手感仅微温。
   - 采用 FreeRTOS 调度让渡 (`delay(20)`)，同时严格保持 **`WiFi.setSleep(false)`** 禁用 Wi-Fi 射频休眠，彻底避免路由器 DTIM 丢包或断流。
 - 🔒 **企业级 TLS 9503 加密**：
-  - 固件内嵌 DigiCert 全球根证书，强制校准 SNTP 网络授时，杜绝明文传输与重放拦截。
+  - 固件内嵌公共可信根证书包（ISRG Root X1/X2 + Certum），强制校准 SNTP 网络授时，杜绝明文传输与重放拦截。
 - 🔌 **无损免接线**：
   - 无需占用主板 PCIe 插槽，无需接跳线到主板开关针脚，不破坏机箱美观与主板原厂质保。
 
@@ -219,7 +223,9 @@ python -m platformio run -e esp32c3_supermini -t upload
 | 红灯 | 蓝灯 | 状态解释 | 处理建议 |
 |:---:|:---:|---|---|
 | 灭 | 灭 | **彻底无供电** | 检查 Type-C 线缆是否插好，确认充电头通电 |
-| 亮 | 灭 | **供电正常，但未连上网络** | 检查 2.4G Wi-Fi 密码是否正确，路由器是否断网 |
+| 亮 | 灭 | **安全停止 (SAFE STOP)** | 串口查看配置校验错误字段（`config.h` 参数异常） |
+| 亮 | 每 2 秒单闪 1 下 | **正在连接 Wi-Fi** | 若持续闪烁，检查 2.4G Wi-Fi 名称/密码或路由器距离 |
+| 亮 | 每 2 秒双闪 2 下 | **Wi-Fi 已连上，连云失败/待对时** | 检查路由器外网/NTP 连通性，或串口查看 `[cloud]` 日志 |
 | 亮 | 常亮 | **工作正常，云端在线** | 系统就绪，随时可以在手机 App 点击开机 |
 | 亮 | 快闪 3 下 | **接收到开机指令** | 正在发射 WOL 封包并自动回弹状态 |
 

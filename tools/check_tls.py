@@ -15,12 +15,15 @@ def main():
     parser.add_argument('--proxy', help='Optional local HTTP CONNECT proxy, e.g. 127.0.0.1:7897')
     args = parser.parse_args()
     header = (ROOT / 'include/BemfaRootCa.h').read_text(encoding='utf-8')
-    pem = re.search(r'-----BEGIN CERTIFICATE-----.*?-----END CERTIFICATE-----', header, re.S).group(0)
+    pems = re.findall(r'-----BEGIN CERTIFICATE-----.*?-----END CERTIFICATE-----', header, re.S)
+    if not pems:
+        raise RuntimeError('No PEM certificates found in include/BemfaRootCa.h')
+    pem = '\n'.join(pems) + '\n'
     ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
     ctx.minimum_version = ssl.TLSVersion.TLSv1_2
     ctx.maximum_version = ssl.TLSVersion.TLSv1_2
     ctx.load_verify_locations(cadata=pem)
-    ctx.set_ciphers('ECDHE-RSA-AES128-GCM-SHA256')
+    ctx.set_ciphers('ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256')
     ctx.set_ecdh_curve('prime256v1')
     if args.proxy:
         host, port = args.proxy.rsplit(':', 1)
@@ -44,7 +47,7 @@ def main():
             lines = [
                 'TLS probe, no credentials or MQTT CONNECT sent.',
                 'Host and SNI: bemfa.com; port: 9503',
-                'Trust: exact public Certum root embedded in firmware (no other roots).',
+                'Trust: exact public root CAs embedded in firmware (no system/other roots).',
                 'Certificate and hostname verification: OK',
                 'Protocol: ' + tls.version(),
                 'Cipher: ' + tls.cipher()[0],
